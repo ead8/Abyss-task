@@ -1,0 +1,143 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.leftControls,
+.rightControls {
+  display: flex;
+  gap: 10px; /* space between items */
+}
+
+.yellowButton {
+  background-color: yellow;
+  border: none;
+  padding: 2px 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.listView,
+.zoomIn,
+.zoomOut {
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.messageIcon {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+select,
+button {
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+/*  header css */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom: solid 1px rgb(222, 219, 219);
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+}
+
+.service {
+  font-size: 24px;
+  font-weight: 450;
+  padding: 5px;
+}
+
+.number {
+  background-color: rgb(245, 180, 0);
+  border-radius: 30%;
+  padding: 1px 8px;
+  color:#ffff
+
+}
+
+.right-side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.list-view {
+  background-color: rgb(70, 6, 233);
+  border-radius: 3px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-right: 5px;
+  font-weight: 500;
+}
+
+.center{
+  background-color: white;
+  border-radius: 3px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  color: gray;
+  margin-right: 10px;
+  font-weight: 500;
+  border:none
+}
+.icon-container {
+  display: flex;
+  margin-left: 10px;
+  gap: 1px;
+}
+
+.icon {
+  background-color: white;
+  color: gray;
+  padding:10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-right: 1px;
+  border: none;
+  font-weight: 500;
+}
+
+.zoom-dropdown {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  /* display: none; */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.dropdown-content div {
+  padding: 5px 10px;
+  cursor: pointer;
+}
