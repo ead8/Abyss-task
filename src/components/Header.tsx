@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  const zoomOptions = [25, 50, 75, 100, 125, 150];
+  const zoomOptions = [25,30,40, 50,60,70,80,90, 100, 125, 150];
 
   const handleZoomClick = (percentage: number) => {
     setZoomPercentage(percentage);
@@ -24,36 +24,41 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <div className="header">
-      <div className="left-side">
-        <span className="service">Services</span>
-        <span className="number">0</span>
+    <header className="header">
+      <div className="header__left-side">
+        <span className="header__service">Services</span>
+        <span className="header__number">0</span>
       </div>
-      <div className="right-side">
-        <div className="list-view">LIST VIEW</div>
+      <div className="header__right-side">
+        <button className="header__list-view">LIST VIEW</button>
         <button
-          onClick={() => handleCenter()}
-          className="center"
+          onClick={handleCenter}
+          className="header__center"
           title="Go to Center"
         >
           <SiMinutemailer />
         </button>
-        <div className="icon-container">
+        <div className="header__icon-container">
           <button
-            className="icon"
+            className="header__icon header__icon--minus"
             onClick={() => setZoomPercentage(Math.max(zoomPercentage - 10, 25))}
           >
             <FiMinus />
           </button>
           <div
-            className="zoom-dropdown"
+            className={`header__zoom-dropdown${
+              isDropdownOpen ? " header__zoom-dropdown--open" : ""
+            }`}
             onClick={() => setDropdownOpen(!isDropdownOpen)}
           >
             {zoomPercentage}%
             {isDropdownOpen && (
-              <div className="dropdown-content">
+              <div className="header__dropdown-content">
                 {zoomOptions.map((option) => (
-                  <div key={option} onClick={() => handleZoomClick(option)}>
+                  <div
+                    key={option}
+                    onClick={() => handleZoomClick(option)}
+                  >
                     {option}%
                   </div>
                 ))}
@@ -61,16 +66,14 @@ const Header: React.FC<HeaderProps> = ({
             )}
           </div>
           <button
-            className="icon"
-            onClick={() =>
-              setZoomPercentage(Math.min(zoomPercentage + 10, 150))
-            }
+            className="header__icon header__icon--plus"
+            onClick={() => setZoomPercentage(Math.min(zoomPercentage + 10, 150))}
           >
             <FiPlus />
           </button>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

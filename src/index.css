@@ -11,3 +11,16 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+body,
+html {
+  min-height: 100%;
+  min-width: 100%;
+  background: #f1f5f9;
+}
+
+*,*::after,*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
