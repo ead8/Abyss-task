@@ -8,6 +8,7 @@ interface Node {
   id: string;
   label: string;
   children: Node[];
+  color?: string ; // Add a color property
 }
 
 interface NodeComponentProps {
@@ -15,6 +16,21 @@ interface NodeComponentProps {
   nodes: Node[];
   setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
 }
+
+const generateColor = (parentColor?: string) => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    const index = Math.floor(Math.random() * 16);
+    if (parentColor && parentColor.charAt(i) === "#") {
+      color += letters[index];
+    } else {
+      color += parentColor ? parentColor.charAt(i) : letters[index];
+    }
+  }
+  return color;
+};
+
 
 const NodeComponent: React.FC<NodeComponentProps> = ({
   node,
@@ -28,10 +44,12 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
   const [popup, setPopup] = useState(false);
 
   const addNode = () => {
+    // Generate or assign a color to the new node based on the parent's color
     const newNode: Node = {
-      id: Math.random().toString(36).substr(2, 9),
+      id: Math.random().toString(36).substring(2, 9),
       label: newLabel,
       children: [],
+      color: generateColor(node.color),
     };
 
     const updatedNodes = [...nodes];
@@ -72,7 +90,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
 
   const deleteNode = (id: string) => {
     const updatedNodes = [...nodes];
-    if (id === "root") return; // deleting the root node is not allowed
+    if (id === "root") return; 
     removeNode(updatedNodes, id);
     setNodes(updatedNodes);
   };
@@ -94,6 +112,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
       {isEditing ? (
         <div className="node-input">
           <input
+            type="text"
             value={editedLabel}
             placeholder="Category Name"
             onChange={(e) => setEditedLabel(e.target.value)}
@@ -104,7 +123,10 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
         </div>
       ) : (
         <>
-          <a className={`tree a ${node.id === "root" ? "root" : ""}`}>
+          <a
+            className={`tree a ${node.id === "root" ? "root" : ""}`}
+            style={{ backgroundColor: node.color }} // Set the background color
+          >
             {node.label}
           </a>
 
@@ -133,12 +155,12 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
 
       {popup && (
         <div className="popup-container">
-          <p>What do want to create?</p>
+          <p>What do you want to create?</p>
           <div className="node-popup">
             <button className="popup-button" onClick={() => handleEdit()}>
               Category
             </button>
-            <button className="popup-button ">Service</button>
+            <button className="popup-button">Service</button>
           </div>
         </div>
       )}
@@ -146,6 +168,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
       {isAdding && (
         <div className="node-input">
           <input
+            placeholder="Category Name"
             value={newLabel}
             onChange={(e) => setNewLabel(e.target.value)}
           />

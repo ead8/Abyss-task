@@ -50,7 +50,7 @@ const Tree: React.FC<TreeProps> = ({
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp} // Stop dragging when mouse leaves the component
+      onMouseLeave={handleMouseUp} 
     >
       <ul className="node-list tree ul">
         {nodes.map((node) => (

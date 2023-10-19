@@ -17,6 +17,7 @@
 
 .header__service {
   font-size: 25px;
+  color: #000;
   font-weight: 400;
   padding-right: 5px;
 }
@@ -38,7 +39,7 @@
 
 .header__icon-container {
   display: flex;
-  margin-left: 10px;
+  margin-left: 5px;
   gap: 2px;
 }
 
@@ -53,23 +54,60 @@
   border-radius: 3px;
   padding: 10px;
   color: white;
-  font-weight: 500;
+  font-weight: 200;
+  font-size: 14px;
   cursor: pointer;
   border: none;
-}
-
-/* Button Hover Effect */
-.header__icon-container button:hover {
-  background-color: #ddd;
+  min-height: 40px; 
 }
 
 /* Center Button and Icons Styles */
 .header__center,
 .header__icon,
 .header__zoom-dropdown {
-  background-color: white;
-  color: #94a3b8;
+    background-color: white;
+    color: #94a3b8;
+    transition: background 0.2s ease-in;
 }
+
+/* Buttons Hover Effect */
+.header__center:hover,
+.header__icon:hover,
+.header__zoom-dropdown:hover {
+    background-color: #9aa3af;
+    color: #fff;
+}
+
+.header__center {
+    position: relative;
+}
+
+.header__center-popup {
+    display: none;
+    position: absolute;
+    top:2.8rem;
+    right: 0;
+    background-color: #9aa3af;
+    border-radius: 5px;
+    padding: 7px;
+    white-space: nowrap;
+  }
+
+.header__center-popup::before {
+    content: "";
+    position: absolute;
+    top: -15px; 
+    right: 10%;
+    border: solid transparent;
+    border-width: 8px;
+    border-bottom-color: #9aa3af;
+    transform: translateX(-50%); 
+  }
+  
+  /* Show the popup on hover */
+  .header__center:hover .header__center-popup {
+    display: block;
+  }
 
 /* Zoom Dropdown Styles */
 .header__zoom-dropdown {
@@ -84,9 +122,8 @@
 .header__dropdown-content {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 30%;
   background-color: white;
-  border: 1px solid #ccc;
   border-radius: 5px;
 }
 

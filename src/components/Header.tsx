@@ -30,17 +30,19 @@ const Header: React.FC<HeaderProps> = ({
         <span className="header__number">0</span>
       </div>
       <div className="header__right-side">
-        <button className="header__list-view">LIST VIEW</button>
+        <div className="header__list-view">LIST VIEW</div>
         <button
           onClick={handleCenter}
           className="header__center"
-          title="Go to Center"
         >
           <SiMinutemailer />
+          <div className="header__center-popup">
+          <p>Go to Center</p>
+        </div>
         </button>
         <div className="header__icon-container">
           <button
-            className="header__icon header__icon--minus"
+            className="header__icon "
             onClick={() => setZoomPercentage(Math.max(zoomPercentage - 10, 25))}
           >
             <FiMinus />
@@ -66,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({
             )}
           </div>
           <button
-            className="header__icon header__icon--plus"
+            className="header__icon "
             onClick={() => setZoomPercentage(Math.min(zoomPercentage + 10, 150))}
           >
             <FiPlus />
