@@ -3,7 +3,6 @@ import "./node.css";
 import { FiEdit2 } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 import { IoMdCheckmark } from "react-icons/io";
-
 interface Node {
   id: string;
   label: string;

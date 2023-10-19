@@ -72,8 +72,7 @@
 
 /* Buttons Hover Effect */
 .header__center:hover,
-.header__icon:hover,
-.header__zoom-dropdown:hover {
+.header__icon:hover {
     background-color: #9aa3af;
     color: #fff;
 }
@@ -131,4 +130,8 @@
   cursor: pointer;
   padding: 5px 10px;
   cursor: pointer;
+}
+
+.header__dropdown-content div:hover {
+  background: rgb(222, 219, 219);
 }
