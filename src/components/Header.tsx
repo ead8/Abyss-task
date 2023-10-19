@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({
               <div className="header__dropdown-content">
                 {zoomOptions.map((option) => (
                   <div key={option} onClick={() => handleZoomClick(option)}>
-                    {option}%
+                    {zoomPercentage==option?option+ "%✓":option+'%'}
                   </div>
                 ))}
               </div>
