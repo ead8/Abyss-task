@@ -110,12 +110,13 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
   return (
     <li className="tree li ">
       {isEditing ? (
-        <div className="node-input">
+        <div >
           <input
             type="text"
             value={editedLabel}
             placeholder="Category Name"
             onChange={(e) => setEditedLabel(e.target.value)}
+            className="node-input"
           />
           <button onClick={saveEditedNode} className="tree ">
             <IoMdCheckmark className="mark" />
@@ -166,11 +167,13 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
       )}
 
       {isAdding && (
-        <div className="node-input">
+        <div >
           <input
             placeholder="Category Name"
+            type="text"
             value={newLabel}
             onChange={(e) => setNewLabel(e.target.value)}
+            className="node-input"
           />
           <button className="tree button">
             <FiPlus />
