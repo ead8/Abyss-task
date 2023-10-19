@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Header.css";
 import { SiMinutemailer } from "react-icons/si";
 import { FiPlus, FiMinus } from "react-icons/fi";
@@ -15,13 +15,32 @@ const Header: React.FC<HeaderProps> = ({
   handleCenter,
 }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  const zoomOptions = [25,30,40, 50,60,70,80,90, 100, 125, 150];
+  const zoomOptions = [25, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150];
 
   const handleZoomClick = (percentage: number) => {
     setZoomPercentage(percentage);
     setDropdownOpen(false);
   };
+
+  const closeDropdown = () => {
+    setDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="header">
@@ -31,14 +50,11 @@ const Header: React.FC<HeaderProps> = ({
       </div>
       <div className="header__right-side">
         <div className="header__list-view">LIST VIEW</div>
-        <button
-          onClick={handleCenter}
-          className="header__center"
-        >
+        <button onClick={handleCenter} className="header__center">
           <SiMinutemailer />
           <div className="header__center-popup">
-          <p>Go to Center</p>
-        </div>
+            <p>Go to Center</p>
+          </div>
         </button>
         <div className="header__icon-container">
           <button
@@ -48,6 +64,7 @@ const Header: React.FC<HeaderProps> = ({
             <FiMinus />
           </button>
           <div
+            ref={dropdownRef}
             className={`header__zoom-dropdown${
               isDropdownOpen ? " header__zoom-dropdown--open" : ""
             }`}
@@ -57,10 +74,7 @@ const Header: React.FC<HeaderProps> = ({
             {isDropdownOpen && (
               <div className="header__dropdown-content">
                 {zoomOptions.map((option) => (
-                  <div
-                    key={option}
-                    onClick={() => handleZoomClick(option)}
-                  >
+                  <div key={option} onClick={() => handleZoomClick(option)}>
                     {option}%
                   </div>
                 ))}
