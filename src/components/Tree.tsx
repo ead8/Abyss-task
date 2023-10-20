@@ -27,7 +27,6 @@ const Tree: React.FC<TreeProps> = ({
   handleMouseMove,
   handleMouseUp,
   position,
-  dragging,
   scaleFactor,
   treeRef,
 }) => {

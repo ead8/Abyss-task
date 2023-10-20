@@ -84,6 +84,8 @@
   padding: 5px 5px;
   background: #fff;
   color: #666;
+  cursor: auto;
+  margin-top: 10px;
 }
 
 .tree .button {
