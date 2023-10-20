@@ -3,11 +3,11 @@ import Header from "./components/Header";
 import Tree from "./components/Tree";
 
 function App() {
-  const [zoomPercentage, setZoomPercentage] = useState(100);
+  const [zoomPercentage, setZoomPercentage] = useState<number>(100);
   const treeRef = useRef<HTMLDivElement>(null);
 
-  const [dragging, setDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 600, y: 150 });
+  const [dragging, setDragging] = useState<boolean>(false);
+  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 400, y: 100 });
   const dragStart = useRef({ x: 0, y: 0 });
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -32,8 +32,8 @@ function App() {
   };
   const handleCenter = () => {
     setPosition({
-      x: 200,
-      y: 200,
+      x: 300,
+      y: 100,
     });
   };
 

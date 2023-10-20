@@ -40,12 +40,12 @@ const Tree: React.FC<TreeProps> = ({
       ref={treeRef}
       className="tree tree-container"
       style={{
-        position: "fixed",
+        position: "relative",
         left: position.x,
         top: position.y,
         transform: `scale(${scaleFactor})`,
         cursor: "move",
-        minWidth: "100%"
+        minWidth: "100%",
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

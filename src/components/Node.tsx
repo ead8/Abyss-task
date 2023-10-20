@@ -48,7 +48,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
       id: Math.random().toString(36).substring(2, 9),
       label: newLabel,
       children: [],
-      color: node.children.length > 0 ? node.children[0].color : generateColor(node.color), // Use the first child's color, if available
+      color: node.children.length > 0 ? node.children[0].color : generateColor(node.color),
     };
   
     const updatedNodes = [...nodes];
@@ -147,7 +147,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
                 className="tree button delete"
                 onClick={() => deleteNode(node.id)}
               >
-                <span>X</span>
+                <span> x</span>
               </button>
             </>
           )}
@@ -175,8 +175,8 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
             onChange={(e) => setNewLabel(e.target.value)}
             className="node-input"
           />
-          <button className="tree button">
-            <FiPlus />
+          <button className="tree mark remove-edit" >
+              x
           </button>
           <button onClick={addNode} className="tree mark">
             <IoMdCheckmark className="mark" />
