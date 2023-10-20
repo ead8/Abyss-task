@@ -48,9 +48,9 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
       id: Math.random().toString(36).substring(2, 9),
       label: newLabel,
       children: [],
-      color: generateColor(node.color),
+      color: node.children.length > 0 ? node.children[0].color : generateColor(node.color), // Use the first child's color, if available
     };
-
+  
     const updatedNodes = [...nodes];
     const targetNode = findNode(updatedNodes, node.id);
     if (targetNode) {
@@ -59,6 +59,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
     setNodes(updatedNodes);
     setIsAdding(false);
   };
+  
 
   const startEditing = () => {
     setIsEditing(true);
@@ -125,7 +126,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
         <>
           <a
             className={`tree a ${node.id === "root" ? "root" : ""}`}
-            style={{ backgroundColor: node.color }} // Set the background color
+            style={{ backgroundColor: node.color }} 
           >
             {node.label}
           </a>

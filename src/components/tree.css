@@ -21,17 +21,21 @@
   content: "";
   position: absolute;
   top: 0;
-  right: 50%;
+  right: 70%;
   border-top: 1px solid #ccc;
-  width: 50%;
+  width: 60%;
   height: 20px;
 }
 .tree li::after {
   right: auto;
-  left: 50%;
+  left: 30%;
   border-left: 1px solid #ccc;
 }
-
+.tree li::before {
+  left: auto;
+  right: 50%;
+  border-right: 1px solid #ccc;
+}
 /* remove left-right connectors from elements without any siblings*/
 .tree li:only-child::after,
 .tree li:only-child::before {
@@ -62,25 +66,27 @@
   content: "";
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 47%;
   border-left: 1px solid #ccc;
   width: 0;
   height: 20px;
 }
 
-.tree li a,.node-input{
+.tree li a{
   border: 1px solid #ccc;
   padding: 5px 10px;
   text-decoration: none;
   color: #666;
   font-size: 11px;
-  margin-right: 6px;
+  margin-right: 10px;
   border-radius: 5px;
   transition: all 0.5s;
 }
 .node-input{
-  min-width: 130px;
-  outline: none;
+  min-width: 100px;
+  all: unset;
+  padding: 5px 5px;
+  background: #fff;
 }
 
 .tree .button {
@@ -92,10 +98,11 @@
   width: 20px;
   height: 20px;
   background-color: rgb(181, 181, 181);
+  cursor: pointer;
 }
 
 .tree .delete {
-  background-color: red;
+  background-color: rgb(250, 64, 64);
   color: white;
   width: 18px;
   height: 18px;
@@ -124,7 +131,6 @@
   padding: 1px 2.5px;
   color: white;
 }
-
 
 .popup-container {
   margin-top: 5px;
