@@ -66,7 +66,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
   };
   const handleEdit = () => {
     setIsAdding(true);
-    setPopup(!popup);
+    setPopup(false);
   };
 
   const saveEditedNode = () => {
@@ -107,6 +107,11 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
     return false;
   };
 
+  const showPopUp=()=>{
+    if(!node.children.length ) setPopup(!popup)
+    else handleEdit()
+  }
+
   return (
     <li className="tree li ">
       {isEditing ? (
@@ -137,7 +142,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
             </button>
           ) : (
             <>
-              <button className="tree button" onClick={() => setPopup(!popup)}>
+              <button className="tree button" onClick={showPopUp}>
                 <FiPlus />
               </button>
               <button className="tree button" onClick={startEditing}>
@@ -154,7 +159,7 @@ const NodeComponent: React.FC<NodeComponentProps> = ({
         </>
       )}
 
-      {popup && (
+      { popup && (
         <div className="popup-container">
           <p>What do you want to create?</p>
           <div className="node-popup">

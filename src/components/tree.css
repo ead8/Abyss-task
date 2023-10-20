@@ -3,7 +3,6 @@
   padding-top: 20px;
   position: relative;
   white-space: nowrap; 
-  overflow-x: auto;
   transition: all 0.5s;
 }
 
@@ -23,7 +22,7 @@
   top: 0;
   right: 70%;
   border-top: 1px solid #ccc;
-  width: 70%;
+  width: 60%;
   height: 20px;
 }
 .tree li::after {
@@ -98,6 +97,7 @@
   height: 20px;
   background-color: rgb(181, 181, 181);
   cursor: pointer;
+  position: relative;
 }
 
 .tree .delete {
@@ -145,7 +145,6 @@
   background-color: #fff;
   padding: 10px;
   border-radius: 2px;
-  position: relative;
   z-index: 10;
   left: 60px;
 }
@@ -163,4 +162,10 @@
   width: 100px;
   height: 40px;
   margin-right: 5px;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background-color: #e9e6e6;
+ 
 }
